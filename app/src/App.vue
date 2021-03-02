@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
       followers: 0,
@@ -16,12 +16,33 @@ export default {
         username: "nova",
         firstName: "Nova",
         lastName: "Sangeeth",
-        email: 'novasangeeth@gg.com',
-        isAdmin: true
+        email: "novasangeeth@gg.com",
+        isAdmin: false,
+      },
+    };
+  },
+  computed: {
+    fullName() {
+      return `${this.user.firstName} ${this.user.lastName}`;
+    },
+  },
+  methods: {
+    followUser() {
+      this.followers = this.followers + 1
+    }
+  },
+  mounted() {
+    this.followUser();
+    console.log("this function is mounted right now and the follow is appended by 1.")
+  },
+  watch: {
+    followers(newfollowerCount, old_followerCount) {
+      if (old_followerCount < newfollowerCount) {
+        console.log(this.user.username + " has gained a follower")
       }
     }
   }
-}
+};
 </script>
 
 <style>
