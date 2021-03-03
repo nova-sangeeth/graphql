@@ -15,6 +15,26 @@
       Followers:
       {{ followers }}
     </strong>
+
+    <form class="new_tweet_form" @submit.prevent="CreateNewTweet">
+      <label for="new tweet"><strong>new tweet</strong></label>
+      <textarea name="" id="new tweet" cols="30" rows="4" v-model="newtweetdata"></textarea>
+
+      <div class="tweet_type">
+        <label for="newTweetType"><strong>create tweet type.</strong></label>
+        <select name="" id="newTweetType" v-model="newtweettype">
+          <option
+            :value="option.value"
+            v-for="(option, index) in tweetTypes"
+            :key="index"
+          >
+            {{ option.name }}
+          </option>
+        </select>
+      </div>
+      <button type="submit">Tweet out.</button>
+    </form>
+
     <button @click="followUser">follow</button>
     <tweets
       v-for="tweet in user.tweets"
