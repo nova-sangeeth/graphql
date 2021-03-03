@@ -53,18 +53,25 @@ export default {
   components: { tweets },
   data() {
     return {
+      newtweetdata: '',
+      newtweettype: 'instant',
+      tweetTypes: [
+        {value: 'draft', name: 'Draft'},
+        {value: 'instant', name: 'Instant Tweet'},
+        {value: 'timed', name: 'timed tweet'}
+      ],
       followers: 0,
       user: {
         id: 1,
-        username: "nova",
+        username: "nova_sangeeth",
         firstName: "Nova",
         lastName: "Sangeeth",
         email: "novasangeeth@gg.com",
         isAdmin: false,
         tweets: [
-          { id: 1, content: "twitter is great.." },
-          { id: 2, content: "testing this application's components.." },
-          { id: 3, content: "reddit is great." },
+          // { id: 1, content: "twitter is great.." },
+          // { id: 2, content: "testing this application's components.." },
+          // { id: 3, content: "reddit is great." },
         ],
       },
     };
