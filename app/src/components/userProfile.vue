@@ -88,6 +88,18 @@ export default {
     toggleFavourite(id) {
       console.log(`fav-ed tweet ${id}`);
     },
+    CreateNewTweet() {
+      if (this.newtweetdata && this.newtweettype != 'draft') {
+        this.user.tweets.push({
+            id: this.user.tweets.length + 1,
+            content: this.newtweetdata
+        })
+        this.newtweetdata = ""
+      }
+      else {
+        alert('this is a draft item')
+      }
+    }
   },
   mounted() {
     this.followUser();
