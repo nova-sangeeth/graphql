@@ -89,6 +89,9 @@ export default {
       console.log(`fav-ed tweet ${id}`);
     },
     CreateNewTweet() {
+      if (this.newtweetdata == '' ){
+        alert('There is nothing to tweet.')
+      }
       if (this.newtweetdata && this.newtweettype != 'draft') {
         this.user.tweets.push({
             id: this.user.tweets.length + 1,
@@ -96,9 +99,9 @@ export default {
         })
         this.newtweetdata = ""
       }
-      else {
-        alert('this is a draft item')
-      }
+      // else {
+      //   alert('this is a draft item')
+      // }
     }
   },
   mounted() {
