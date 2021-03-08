@@ -16,9 +16,19 @@
       {{ followers }}
     </strong>
 
-    <form class="new_tweet_form" @submit.prevent="CreateNewTweet">
-      <label for="new tweet"><strong>new tweet</strong></label>
-      <textarea name="" id="new tweet" cols="30" rows="4" v-model="newtweetdata"></textarea>
+    <div class="create_tweet">
+      <form class="new_tweet_form" @submit.prevent="CreateNewTweet" :class="{ 'exceeded': newTweetCharCount > 80}">
+        <label for="new tweet">
+          <strong>new tweet</strong>
+          ({{ newTweetCharCount }})
+          </label>
+        <textarea
+          name=""
+          id="new tweet"
+          cols="30"
+          rows="4"
+          v-model="newtweetdata"
+        ></textarea>
 
       <div class="tweet_type">
         <label for="newTweetType"><strong>create tweet type.</strong></label>
