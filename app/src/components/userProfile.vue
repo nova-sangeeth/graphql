@@ -116,3 +116,16 @@ export default {
   },
 };
 </script>
+
+<style>
+.new_tweet_form {
+  display: flex;
+  border-top: 2px;
+  padding: 10px;
+  flex-direction: column;
+  margin: 10px;
+}
+.tweet_type {
+  margin: 10px
+}
+</style>
