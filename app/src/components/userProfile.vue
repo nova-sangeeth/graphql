@@ -1,20 +1,26 @@
 <template>
-  <div>
-    <strong> Username: {{ user.username }}, Full Name: {{ fullName }} </strong>
+  <div class="user_profile">
+    <div class="user_profile_panel">
+      <strong>
+        Username: {{ user.username }}
+        <br />
+        Full Name: {{ fullName }}
+      </strong>
 
-    <div v-if="user.isAdmin">
-      <p>admin</p>
-    </div>
-    <!-- <div v-else>
+      <div v-if="user.isAdmin">
+        <p class="user_profile_admin_badge">admin</p>
+      </div>
+      <!-- <div v-else>
       <p>Not Admin</p>
     </div> -->
 
-    <p>Email:{{ user.email }}</p>
-    <p>Admin Status:{{ user.isAdmin }}</p>
-    <strong>
-      Followers:
-      {{ followers }}
-    </strong>
+      <p>Email:{{ user.email }}</p>
+      <p>Admin Status:{{ user.isAdmin }}</p>
+      <strong>
+        Followers:
+        {{ followers }}
+      </strong>
+    </div>
 
     <div class="create_tweet">
       <form class="new_tweet_form" @submit.prevent="CreateNewTweet" :class="{ 'exceeded': newTweetCharCount > 80}">
@@ -30,21 +36,21 @@
           v-model="newtweetdata"
         ></textarea>
 
-      <div class="tweet_type">
-        <label for="newTweetType"><strong>create tweet type.</strong></label>
-        <select name="" id="newTweetType" v-model="newtweettype">
-          <option
-            :value="option.value"
-            v-for="(option, index) in tweetTypes"
-            :key="index"
-          >
-            {{ option.name }}
-          </option>
-        </select>
-      </div>
-      <button type="submit">Tweet out.</button>
-    </form>
-
+        <div class="tweet_type">
+          <label for="newTweetType"><strong>create tweet type.</strong></label>
+          <select name="" id="newTweetType" v-model="newtweettype">
+            <option
+              :value="option.value"
+              v-for="(option, index) in tweetTypes"
+              :key="index"
+            >
+              {{ option.name }}
+            </option>
+          </select>
+        </div>
+        <button type="submit">Tweet out.</button>
+      </form>
+    </div>
     <button @click="followUser">follow</button>
     <tweets
       v-for="tweet in user.tweets"
@@ -52,6 +58,7 @@
       :username="user.username"
       :tweet="tweet"
       @favourite="toggleFavourite"
+      class="tweet_wraper"
     />
   </div>
 </template>
@@ -63,12 +70,12 @@ export default {
   components: { tweets },
   data() {
     return {
-      newtweetdata: '',
-      newtweettype: 'instant',
+      newtweetdata: "",
+      newtweettype: "instant",
       tweetTypes: [
-        {value: 'draft', name: 'Draft'},
-        {value: 'instant', name: 'Instant Tweet'},
-        {value: 'timed', name: 'timed tweet'}
+        { value: "draft", name: "Draft" },
+        { value: "instant", name: "Instant Tweet" },
+        { value: "timed", name: "timed tweet" },
       ],
       followers: 0,
       user: {
@@ -77,7 +84,7 @@ export default {
         firstName: "Nova",
         lastName: "Sangeeth",
         email: "novasangeeth@gg.com",
-        isAdmin: false,
+        isAdmin: true,
         tweets: [
           // { id: 1, content: "twitter is great.." },
           // { id: 2, content: "testing this application's components.." },
@@ -90,6 +97,9 @@ export default {
     fullName() {
       return `${this.user.firstName} ${this.user.lastName}`;
     },
+    newTweetCharCount() {
+      return this.newtweetdata.length;
+    }
   },
   methods: {
     followUser() {
@@ -99,20 +109,20 @@ export default {
       console.log(`fav-ed tweet ${id}`);
     },
     CreateNewTweet() {
-      if (this.newtweetdata == '' ){
-        alert('There is nothing to tweet.')
+      if (this.newtweetdata == "") {
+        alert("There is nothing to tweet.");
       }
-      if (this.newtweetdata && this.newtweettype != 'draft') {
+      if (this.newtweetdata && this.newtweettype != "draft") {
         this.user.tweets.push({
-            id: this.user.tweets.length + 1,
-            content: this.newtweetdata
-        })
-        this.newtweetdata = ""
+          id: this.user.tweets.length + 1,
+          content: this.newtweetdata,
+        });
+        this.newtweetdata = "";
       }
       // else {
       //   alert('this is a draft item')
       // }
-    }
+    },
   },
   mounted() {
     this.followUser();
@@ -130,15 +140,62 @@ export default {
 };
 </script>
 
-<style>
-.new_tweet_form {
-  display: flex;
-  border-top: 2px;
-  padding: 10px;
-  flex-direction: column;
-  margin: 10px;
+<style lang="scss">
+.user_profile {
+  display: grid;
+  grid-template-columns: 1fr, 3fr;
+  grid-gap: 15px;
+  padding: 50px 5%;
 }
-.tweet_type {
-  margin: 10px
+.user_profile_panel {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+
+  h1 {
+    margin: 0px;
+  }
+  .user_profile_admin_badge {
+    background: palegreen;
+    color: black;
+    border-radius: 10px;
+    margin-right: auto;
+    padding: 10px;
+  }
+}
+
+.create_tweet {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  
+  .exceeded {
+    border-color: red;
+    background: pink;
+  }
+  .instant-color {
+    color: green;
+    background: yellow;
+  }
+
+  .tweet_wraper {
+    display: grid;
+    grid-gap: 10px;
+  }
+  .tweet_type {
+    margin: 10px;
+    color: blueviolet
+  }
+  .new_tweet_form {
+    display: flex;
+    border-top: 2px;
+    padding: 10px;
+    flex-direction: column;
+    margin: 10px;
+  }
 }
 </style>
