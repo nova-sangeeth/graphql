@@ -22,36 +22,14 @@
       </strong>
     </div>
 
-    <div class="create_tweet">
-      <form class="new_tweet_form" @submit.prevent="CreateNewTweet" :class="{ 'exceeded': newTweetCharCount > 80}">
-        <label for="new tweet">
-          <strong>new tweet</strong>
-          ({{ newTweetCharCount }})
-          </label>
-        <textarea
-          name=""
-          id="new tweet"
-          cols="30"
-          rows="4"
-          v-model="newtweetdata"
-        ></textarea>
-
-        <div class="tweet_type">
-          <label for="newTweetType"><strong>create tweet type.</strong></label>
-          <select name="" id="newTweetType" v-model="newtweettype">
-            <option
-              :value="option.value"
-              v-for="(option, index) in tweetTypes"
-              :key="index"
-            >
-              {{ option.name }}
-            </option>
-          </select>
-        </div>
-        <button type="submit">Tweet out.</button>
-      </form>
-    </div>
+    
     <button @click="followUser">follow</button>
+    <div>
+      <CreateTweet
+      @create-tweet="CreateNewTweet"
+      />
+    </div>
+    
     <tweets
       v-for="tweet in user.tweets"
       :key="tweet.id"
@@ -65,18 +43,19 @@
 
 <script>
 import tweets from "./Tweet.vue";
+import CreateTweet from "./CreateTweet.vue";
 export default {
   name: "UserProfile",
-  components: { tweets },
+  components: { tweets, CreateTweet },
   data() {
     return {
-      newtweetdata: "",
-      newtweettype: "instant",
-      tweetTypes: [
-        { value: "draft", name: "Draft" },
-        { value: "instant", name: "Instant Tweet" },
-        { value: "timed", name: "timed tweet" },
-      ],
+      // newtweetdata: "",
+      // newtweettype: "instant",
+      // tweetTypes: [
+      //   { value: "draft", name: "Draft" },
+      //   { value: "instant", name: "Instant Tweet" },
+      //   { value: "timed", name: "timed tweet" },
+      // ],
       followers: 0,
       user: {
         id: 1,
@@ -108,22 +87,14 @@ export default {
     toggleFavourite(id) {
       console.log(`fav-ed tweet ${id}`);
     },
-    CreateNewTweet() {
-      if (this.newtweetdata == "") {
-        alert("There is nothing to tweet.");
-      }
-      if (this.newtweetdata && this.newtweettype != "draft") {
-        this.user.tweets.push({
-          id: this.user.tweets.length + 1,
-          content: this.newtweetdata,
-        });
-        this.newtweetdata = "";
+    CreateNewTweet(tweet) {
+      this.user.tweets.push({id: this.user.tweets.length + 1, content: tweet });
+        // this.newtweetdata = ""; 
       }
       // else {
       //   alert('this is a draft item')
       // }
     },
-  },
   mounted() {
     this.followUser();
     console.log(
