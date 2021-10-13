@@ -5,6 +5,9 @@
   "Header": {
     "description": "Auto imported from components/header.vue"
   },
+  "List": {
+    "description": "Auto imported from components/list.vue"
+  },
   "Login": {
     "description": "Auto imported from components/login.vue"
   }

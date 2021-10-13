@@ -1,6 +1,5 @@
 <template>
-  <ul class="todoList">
-  </ul>
+  <ul class="todoList"></ul>
 </template>
 
 <style scoped>

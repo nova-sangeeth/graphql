@@ -1,5 +1,6 @@
 export { default as NuxtLogo } from '../../components/NuxtLogo.vue'
 export { default as Header } from '../../components/header.vue'
+export { default as List } from '../../components/list.vue'
 export { default as Login } from '../../components/login.vue'
 
 // nuxt/nuxt.js#8607
