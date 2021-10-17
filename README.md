@@ -1,4 +1,4 @@
-# nuxt-workout
+# frontend_application
 
 ## Build Setup
 

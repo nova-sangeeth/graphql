@@ -1,22 +1,7 @@
 <template>
-  <new-header/>
-  <!-- <login/> -->
-
+  <Tutorial/>
 </template>
 
 <script>
-import header from "../components/header.vue";
-import login from "../components/login.vue";
-export default {
-  components: {
-    "new-header": header,
-    "login": login,
-  },
-};
+export default {}
 </script>
-
-<style scoped>
-
-</style>
-
-

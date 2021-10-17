@@ -1,7 +1,5 @@
 export { default as NuxtLogo } from '../../components/NuxtLogo.vue'
-export { default as Header } from '../../components/header.vue'
-export { default as List } from '../../components/list.vue'
-export { default as Login } from '../../components/login.vue'
+export { default as Tutorial } from '../../components/Tutorial.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {
