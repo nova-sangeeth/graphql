@@ -7,6 +7,13 @@
     "_name": "_e13a58a6"
   },
   {
+    "name": "todo",
+    "path": "/todo",
+    "component": "/home/novasangeeth/Code--dev/vue-app/pages/todo.vue",
+    "chunkName": "pages/todo",
+    "_name": "_1d005ad6"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/home/novasangeeth/Code--dev/vue-app/pages/index.vue",

@@ -1,9 +1,12 @@
 <template>
-  
+<header></header>
+  <!-- <todo/> -->
 </template>
 
 <script>
-export default {};
+import todo from './todo.vue';
+export default {
+  components: { todo },};
 </script>
 
 
