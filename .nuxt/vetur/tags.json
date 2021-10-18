@@ -1,8 +1,11 @@
 {
+  "Header": {
+    "description": "Auto imported from components/Header.vue"
+  },
   "NuxtLogo": {
     "description": "Auto imported from components/NuxtLogo.vue"
   },
-  "Header": {
-    "description": "Auto imported from components/header.vue"
+  "Tutorial": {
+    "description": "Auto imported from components/Tutorial.vue"
   }
 }
