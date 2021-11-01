@@ -1,18 +1,16 @@
 import os
+from dotenv import load_dotenv
 
-
-from sqlalchemy import create_engine
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 
+load_dotenv()
 
-SQLALCHEMY_SQLITE_CONNECTION_STRING = os.getenv("SQLITE_CONN_STRING")
 SQLALCHEMY_POSTGRES_CONNECTION_STRING = os.getenv("POSTGRES_CONN_STRING")
 
 # postgres connection string
-
-engine = create_engine(SQLALCHEMY_SQLITE_CONNECTION_STRING)
+engine = create_engine(SQLALCHEMY_POSTGRES_CONNECTION_STRING)
 
 
 db_session = scoped_session(
