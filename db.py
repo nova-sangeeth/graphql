@@ -8,7 +8,6 @@ from sqlalchemy.ext.declarative import declarative_base
 load_dotenv()
 
 SQLALCHEMY_POSTGRES_CONNECTION_STRING = os.getenv("POSTGRES_CONN_STRING")
-
 # postgres connection string
 engine = create_engine(SQLALCHEMY_POSTGRES_CONNECTION_STRING)
 
