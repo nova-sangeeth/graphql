@@ -1,1 +1,1 @@
-uvicorn main:app --reload --reload-exclude=*.sql 
+uvicorn main:app --reload --reload-exclude=*.sql
