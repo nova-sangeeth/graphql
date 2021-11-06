@@ -3,8 +3,9 @@ from graphene import String
 from graphql import GraphQLError
 from starlette.graphql import GraphQLApp
 
+
 class CreateUser(graphene.Mutation):
-    class Arguments: 
+    class Arguments:
         username = String(required=True)
         password = String(required=True)
         email = String(required=True)
@@ -20,7 +21,7 @@ class CreateUser(graphene.Mutation):
 
 
 class AuthenticateUser(graphene.Mutation):
-    class Arguments: 
+    class Arguments:
         username = String(required=True)
         password = String(required=True)
 
@@ -33,7 +34,7 @@ class AuthenticateUser(graphene.Mutation):
 
 
 class CreateNewBlog(graphene.Mutation):
-    class Arguments: 
+    class Arguments:
         title = String(required=True)
         content = String(required=True)
 
