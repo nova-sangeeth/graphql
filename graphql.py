@@ -1,4 +1,5 @@
 import graphene
+import bcrypt
 from graphene import String
 from graphql import GraphQLError
 from starlette.graphql import GraphQLApp
@@ -11,11 +12,13 @@ class CreateUser(graphene.Mutation):
         email = String(required=True)
         first_name = String(required=True)
         last_name = String(required=False)
-
-        ok = graphene.Boolean()
+        
+    ok = graphene.Boolean()
+    user graphene.Field()
 
         @staticmethod
         def mutate(self, info, username, password, email, first_name, last_name):
+            hashed_password = bycrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             ok = True
             return CreateUser(ok=ok)
 
