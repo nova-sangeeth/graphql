@@ -11,12 +11,12 @@ class User(Base):
     first_name = Column(String)
     last_name = Column(String)
 
-    def __init__(self, name=None, email=None):
-        self.name = name
+    def __init__(self, username=None, email=None):
+        self.username = username
         self.email = email
 
     def __repr__(self):
-        return "<User %r>" % (self.name)
+        return "<User %r>" % (self.username)
 
 
 class Blog(Base):
