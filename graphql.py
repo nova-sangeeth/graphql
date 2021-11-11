@@ -1,10 +1,7 @@
 import graphene
 import bcrypt
-from graphene import String
 from graphql import GraphQLError
 from starlette.graphql import GraphQLApp
-
-
 
 import user_schema
 import blog_schema
@@ -40,8 +37,8 @@ class CreateUser(graphene.Mutation):
 
 class AuthenticateUser(graphene.Mutation):
     class Arguments:
-        username = String(required=True)
-        password = String(required=True)
+        username = graphene.String(required=True)
+        password = graphene.String(required=True)
 
         ok = graphene.Boolean()
 
@@ -53,11 +50,18 @@ class AuthenticateUser(graphene.Mutation):
 
 class CreateNewBlog(graphene.Mutation):
     class Arguments:
-        title = String(required=True)
-        content = String(required=True)
+        title = graphene.String(required=True)
+        content = graphene.String(required=True)
 
         ok = graphene.Boolean()
 
         @staticmethod
         def mutate(self, info, title, content):
             ok = True
+
+
+
+class Mutations(graphene.ObjectType):
+    create_user = CreateUser.Field()
+    authenticate_user = AuthenticateUser.Field()
+    create_new_blog = CreateNewBlog.Field()
