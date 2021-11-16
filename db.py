@@ -12,9 +12,9 @@ SQLALCHEMY_POSTGRES_CONNECTION_STRING = os.getenv("POSTGRES_CONN_STRING")
 engine = create_engine(SQLALCHEMY_POSTGRES_CONNECTION_STRING)
 
 
-db_session = scoped_session(
-    sessionmaker(autocommit=False, autoflush=False, bind=engine)
-)
+db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 Base.query = db_session.query_property()
